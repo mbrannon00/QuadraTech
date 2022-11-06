@@ -12,30 +12,30 @@ export default function Edit() {
  const navigate = useNavigate();
  
  useEffect(() => {
-   async function fetchData() {
-     const id = params.id.toString();
-     const response = await fetch(`http://localhost:5000/record/${params.id.toString()}`);
- 
-     if (!response.ok) {
-       const message = `An error has occurred: ${response.statusText}`;
-       window.alert(message);
-       return;
-     }
- 
-     const record = await response.json();
-     if (!record) {
-       window.alert(`Record with id ${id} not found`);
-       navigate("/");
-       return;
-     }
- 
-     setForm(record);
-   }
- 
-   fetchData();
- 
-   return;
- }, [params.id, navigate]);
+    async function fetchData() {
+      const id = params.id.toString();
+      const response = await fetch(`http://localhost:5000/record/${params.id.toString()}`);
+  
+      if (!response.ok) {
+        const message = `An error has occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+  
+      const record = await response.json();
+      if (!record) {
+        window.alert(`Record with id ${id} not found`);
+        navigate("/");
+        return;
+      }
+  
+      setForm(record);
+    }
+  
+    fetchData();
+  
+    return;
+  }, [params.id, navigate]);
  
  // These methods will update the state properties.
  function updateForm(value) {
@@ -45,24 +45,24 @@ export default function Edit() {
  }
  
  async function onSubmit(e) {
-   e.preventDefault();
-   const editedPerson = {
-     name: form.name,
-     position: form.position,
-     level: form.level,
-   };
- 
-   // This will send a post request to update the data in the database.
-   await fetch(`http://localhost:5000/update/${params.id}`, {
-     method: "POST",
-     body: JSON.stringify(editedPerson),
-     headers: {
-       'Content-Type': 'application/json'
-     },
-   });
- 
-   navigate("/");
- }
+    e.preventDefault();
+    const editedPerson = {
+      name: form.name,
+      position: form.position,
+      level: form.level,
+    };
+  
+    // This will send a post request to update the data in the database.
+    await fetch(`http://localhost:5000/update/${params.id}`, {
+      method: "POST",
+      body: JSON.stringify(editedPerson),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+  
+    navigate("/");
+  }
  
  // This following section will display the form that takes input from the user to update the data.
  return (
