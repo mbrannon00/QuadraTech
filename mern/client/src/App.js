@@ -14,7 +14,6 @@ const App = () => {
     <div>
       <Navbar />
       <div style={{ margin: 20 }}>
-        <p>hiiiiii</p>
       <Routes>
         <Route exact path="/" element={<RecordList />} />
         <Route path="/edit/:id" element={<Edit />} />
