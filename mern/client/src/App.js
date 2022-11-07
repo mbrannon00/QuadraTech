@@ -1,25 +1,70 @@
 import React from "react";
 
 // We use Route in order to define the different routes of our application
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import axios from 'axios'
+import { createContext, useState, useEffect } from 'react'
+
 
 // We import all the components we need in our app
-import Navbar from "./components/navbar";
-import RecordList from "./components/recordList";
-import Edit from "./components/edit";
-import Create from "./components/create";
+import Home from "./components/webpages/home"
+import Login from "./components/webpages/login"
+import Register from "./components/webpages/register.js"
 
-const App = () => {
+export const UserContext = createContext()
+
+function App() {
+
+  const [userData, setUserData] = useState({
+    token: undefined,
+    user: undefined,
+  })
+
+  useEffect(() => {
+    const isLoggedIn = async () => {
+      let token = localStorage.getItem("auth-token")
+      if (token == null){
+        localStorage.setItem("auth-token", "")
+        token = ""
+      }
+
+      const tokenResponse = await axios.post(
+        'http://localhost:5000/api/auth/tokenIsValid', 
+        null, 
+        {headers: {"auth-token": token}}
+      )
+
+      console.log(tokenResponse.data)
+      if(tokenResponse.data){
+        const userResponse = await axios.get('http://localhost:5000/api/auth/profile',
+          {headers: {'auth-token': token}}
+        )
+        setUserData({
+          token: token,
+          user: userResponse.data
+        })
+      }
+    }
+    isLoggedIn()
+  }, [])
+  
   return (
-    <div>
-      <Navbar />
-      <Routes>
-        <Route exact path="/" element={<RecordList />} />
-        <Route path="/edit/:id" element={<Edit />} />
-        <Route path="/create" element={<Create />} />
-      </Routes>
+    <div> 
+      <UserContext.Provider value={{ userData, setUserData }}>
+        <Router> {/* Router lets page render different components based on address path */}
+          
+        <Routes> {/* Routes contained  for router  */}
+          <Route path="/" element={<Home />} />
+          <Route path="/Login" element={<Login/>} />
+          <Route path="/Register" element={<Register/>} />
+        </Routes>
+
+      </Router>  
+    
+      </UserContext.Provider>
     </div>
-  );
- };
+
+   );
+}
 
 export default App;
