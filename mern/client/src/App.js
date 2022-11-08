@@ -10,6 +10,8 @@ import { createContext, useState, useEffect } from 'react'
 import Home from "./components/webpages/home"
 import Login from "./components/webpages/login"
 import Register from "./components/webpages/register.js"
+import Create from "./components/create.js"
+import RecordList from "./components/recordList.js"
 
 export const UserContext = createContext()
 
@@ -57,6 +59,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Login" element={<Login/>} />
           <Route path="/Register" element={<Register/>} />
+          <Route path="/Add" element={<Create />} />
+          <Route path="/Record" element={<RecordList />} />
         </Routes>
 
       </Router>  
