@@ -14,7 +14,7 @@ export default function Edit() {
  useEffect(() => {
     async function fetchData() {
       const id = params.id.toString();
-      const response = await fetch(`http://localhost:5000/record/${params.id.toString()}`);
+      const response = await fetch(`http://localhost:5000/occupants/${params.id.toString()}`);
   
       if (!response.ok) {
         const message = `An error has occurred: ${response.statusText}`;
@@ -24,7 +24,7 @@ export default function Edit() {
   
       const record = await response.json();
       if (!record) {
-        window.alert(`Record with id ${id} not found`);
+        window.alert(`Occupant with id ${id} not found`);
         navigate("/");
         return;
       }
@@ -53,7 +53,7 @@ export default function Edit() {
     };
   
     // This will send a post request to update the data in the database.
-    await fetch(`http://localhost:5000/update/${params.id}`, {
+    await fetch(`http://localhost:5000/occupants/update/${params.id}`, {
       method: "POST",
       body: JSON.stringify(editedPerson),
       headers: {
@@ -67,7 +67,7 @@ export default function Edit() {
  // This following section will display the form that takes input from the user to update the data.
  return (
    <div>
-     <h3>Update Record</h3>
+     <h3>Update Occupant</h3>
      <form onSubmit={onSubmit}>
        <div className="form-group">
          <label htmlFor="name">Name: </label>

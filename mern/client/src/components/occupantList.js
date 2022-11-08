@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
  
-const Record = (props) => (
+const Occupant = (props) => (
  <tr>
-   <td>{props.record.name}</td>
-   <td>{props.record.position}</td>
-   <td>{props.record.level}</td>
+   <td>{props.occupant.name}</td>
+   <td>{props.occupant.position}</td>
+   <td>{props.occupant.level}</td>
    <td>
      <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
      <button className="btn btn-link"
@@ -19,13 +19,13 @@ const Record = (props) => (
  </tr>
 );
  
-export default function RecordList() {
+export default function OccupantList() {
  const [records, setRecords] = useState([]);
  
  // This method fetches the records from the database.
  useEffect(() => {
    async function getRecords() {
-     const response = await fetch(`http://localhost:5000/record/`);
+     const response = await fetch(`http://localhost:5000/occupants/`);
  
      if (!response.ok) {
        const message = `An error occurred: ${response.statusText}`;
@@ -44,7 +44,7 @@ export default function RecordList() {
  
  // This method will delete a record
  async function deleteRecord(id) {
-   await fetch(`http://localhost:5000/${id}`, {
+   await fetch(`http://localhost:5000/occupants/${id}`, {
      method: "DELETE"
    });
  
@@ -53,10 +53,10 @@ export default function RecordList() {
  }
  
  // This method will map out the records on the table
- function recordList() {
+ function occupantList() {
    return records.map((record) => {
      return (
-       <Record
+       <Occupant
          record={record}
          deleteRecord={() => deleteRecord(record._id)}
          key={record._id}
@@ -78,7 +78,7 @@ export default function RecordList() {
            <th>Action</th>
          </tr>
        </thead>
-       <tbody>{recordList()}</tbody>
+       <tbody>{occupantList()}</tbody>
      </table>
    </div>
  );
