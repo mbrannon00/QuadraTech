@@ -11,7 +11,7 @@ import Home from "./components/webpages/home"
 import Login from "./components/webpages/login"
 import Register from "./components/webpages/register.js"
 import Create from "./components/create.js"
-import RecordList from "./components/recordList.js"
+import OccupantList from "./components/occupantList.js"
 
 export const UserContext = createContext()
 
@@ -60,7 +60,7 @@ function App() {
           <Route path="/Login" element={<Login/>} />
           <Route path="/Register" element={<Register/>} />
           <Route path="/Add" element={<Create />} />
-          <Route path="/Record" element={<RecordList />} />
+          <Route path="/Occupants" element={<OccupantList />} />
         </Routes>
 
       </Router>  
