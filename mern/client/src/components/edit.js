@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router";
 export default function Edit() {
  const [form, setForm] = useState({
    name: "",
+   date: Date(),
    position: "",
    level: "",
    records: [],
@@ -22,14 +23,14 @@ export default function Edit() {
         return;
       }
   
-      const record = await response.json();
-      if (!record) {
+      const occupant = await response.json();
+      if (!occupant) {
         window.alert(`Record with id ${id} not found`);
         navigate("/");
         return;
       }
   
-      setForm(record);
+      setForm(occupant);
     }
   
     fetchData();
@@ -48,12 +49,13 @@ export default function Edit() {
     e.preventDefault();
     const editedPerson = {
       name: form.name,
+      date: form.date,
       position: form.position,
       level: form.level,
     };
   
     // This will send a post request to update the data in the database.
-    await fetch(`http://localhost:5000/update/${params.id}`, {
+    await fetch(`http://localhost:5000/occupants/update/${params.id}`, {
       method: "POST",
       body: JSON.stringify(editedPerson),
       headers: {
@@ -87,6 +89,16 @@ export default function Edit() {
            id="position"
            value={form.position}
            onChange={(e) => updateForm({ position: e.target.value })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="date">Birthday: </label>
+         <input
+           type="date"
+           className="form-control"
+           id="date"
+           value={form.date}
+           onChange={(e) => updateForm({ date: e.target.value })}
          />
        </div>
        <div className="form-group">

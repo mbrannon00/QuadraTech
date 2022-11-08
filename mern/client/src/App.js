@@ -12,6 +12,7 @@ import Login from "./components/webpages/login"
 import Register from "./components/webpages/register.js"
 import Create from "./components/create.js"
 import OccupantList from "./components/occupantList.js"
+import Edit from "./components/edit.js"
 
 export const UserContext = createContext()
 
@@ -61,6 +62,7 @@ function App() {
           <Route path="/Register" element={<Register/>} />
           <Route path="/Add" element={<Create />} />
           <Route path="/Occupants" element={<OccupantList />} />
+          <Route path="/edit" element={<Edit />} />
         </Routes>
 
       </Router>  

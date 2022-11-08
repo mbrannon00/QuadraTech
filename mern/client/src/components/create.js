@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 export default function Create() {
  const [form, setForm] = useState({
    name: "",
-   date: "",
+   date: new Date(),
    position: "",
    level: "",
  });
@@ -37,7 +37,7 @@ export default function Create() {
     });
   
     window.alert('successfully added')
-    setForm({ name: "", date: "", position: "", level: "" });
+    setForm({ name: "", date: Date(), position: "", level: "" });
     navigate("/");
   }
  
@@ -71,9 +71,9 @@ export default function Create() {
          <input
            type="date"
            className="form-control"
-           id="position"
-           value={form.position}
-           onChange={(e) => updateForm({ position: e.target.value })}
+           id="date"
+           value={form.date}
+           onChange={(e) => updateForm({ date: e.target.value })}
          />
        </div>
        <div className="form-group">

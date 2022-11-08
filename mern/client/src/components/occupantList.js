@@ -74,8 +74,8 @@ export default function OccupantList() {
        <thead>
          <tr>
            <th>Name</th>
-           <th>Birthday</th>
            <th>Position</th>
+           <th>Birthday</th>
            <th>Level</th>
            <th>Action</th>
          </tr>
