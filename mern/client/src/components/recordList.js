@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
  
-const Record = (props) => (
+const Occupant = (props) => (
  <tr>
-   <td>{props.record.name}</td>
-   <td>{props.record.position}</td>
-   <td>{props.record.level}</td>
+   <td>{props.occupant.name}</td>
+   <td>{props.occupant.allergies}</td>
+   <td>{props.occupant.daysInShelter}</td>
    <td>
-     <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
+     <Link className="btn btn-link" to={`/edit/${props.occupant._id}`}>Edit</Link> |
      <button className="btn btn-link"
        onClick={() => {
-         props.deleteRecord(props.record._id);
+         props.deleteOccupant(props.occupant._id);
        }}
      >
        Delete
@@ -19,13 +19,13 @@ const Record = (props) => (
  </tr>
 );
  
-export default function RecordList() {
- const [records, setRecords] = useState([]);
+export default function OccupantList() {
+ const [occupants, setOccupants] = useState([]);
  
- // This method fetches the records from the database.
+ // This method fetches the occupants from the database.
  useEffect(() => {
-   async function getRecords() {
-     const response = await fetch(`http://localhost:5000/record/`);
+   async function getOccupants() {
+     const response = await fetch(`http://localhost:5000/occupant/`);
  
      if (!response.ok) {
        const message = `An error occurred: ${response.statusText}`;
@@ -33,52 +33,52 @@ export default function RecordList() {
        return;
      }
  
-     const records = await response.json();
-     setRecords(records);
+     const occupants = await response.json();
+     setOccupants(occupants);
    }
  
-   getRecords();
+   getOccupants();
  
    return;
- }, [records.length]);
+ }, [occupants.length]);
  
- // This method will delete a record
- async function deleteRecord(id) {
+ // This method will delete a occupant
+ async function deleteOccupant(id) {
    await fetch(`http://localhost:5000/${id}`, {
      method: "DELETE"
    });
  
-   const newRecords = records.filter((el) => el._id !== id);
-   setRecords(newRecords);
+   const newOccupants = occupants.filter((el) => el._id !== id);
+   setOccupants(newOccupants);
  }
  
- // This method will map out the records on the table
- function recordList() {
-   return records.map((record) => {
+ // This method will map out the occupants on the table
+ function occupantList() {
+   return occupants.map((occupant) => {
      return (
-       <Record
-         record={record}
-         deleteRecord={() => deleteRecord(record._id)}
-         key={record._id}
+       <Occupant
+         occupant={occupant}
+         deleteOccupant={() => deleteOccupant(occupant._id)}
+         key={occupant._id}
        />
      );
    });
  }
  
- // This following section will display the table with the records of individuals.
+ // This following section will display the table with the occupants.
  return (
    <div>
-     <h3>Record List</h3>
+     <h3>Occupant List</h3>
      <table className="table table-striped" style={{ marginTop: 20 }}>
        <thead>
          <tr>
            <th>Name</th>
-           <th>Position</th>
-           <th>Level</th>
+           <th>Allergies</th>
+           <th>DaysInShelter</th>
            <th>Action</th>
          </tr>
        </thead>
-       <tbody>{recordList()}</tbody>
+       <tbody>{occupantList()}</tbody>
      </table>
    </div>
  );
