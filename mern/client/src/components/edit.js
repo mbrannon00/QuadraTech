@@ -82,16 +82,6 @@ export default function Edit() {
          />
        </div>
        <div className="form-group">
-         <label htmlFor="position">Position: </label>
-         <input
-           type="text"
-           className="form-control"
-           id="position"
-           value={form.position}
-           onChange={(e) => updateForm({ position: e.target.value })}
-         />
-       </div>
-       <div className="form-group">
          <label htmlFor="date">Birthday: </label>
          <input
            type="date"
@@ -101,6 +91,7 @@ export default function Edit() {
            onChange={(e) => updateForm({ date: e.target.value })}
          />
        </div>
+       
        <div className="form-group">
          <div className="form-check form-check-inline">
            <input
