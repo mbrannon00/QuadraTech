@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
  
 export default function Create() {
  const [form, setForm] = useState({
-   today: new Date(),
+   date: new Date(),
    name: "",
    birthday: new Date(),
    allergies: "",
@@ -48,7 +48,7 @@ export default function Create() {
      <h3>Add New Occupant</h3>
      <form onSubmit={onSubmit}>
      <div className="form-group">
-         <label htmlFor="today">Today's Date</label>
+         <label htmlFor="date">Today's Date</label>
          <input
            type="date"
            className="form-control"

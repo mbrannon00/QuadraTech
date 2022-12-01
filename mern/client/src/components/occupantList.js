@@ -7,7 +7,7 @@ const Occupant = (props) => (
    <td>{props.occupant.name}</td>
    <td>{props.occupant.birthday}</td>
    <td>{props.occupant.allergies}</td>
-   <td>{props.occupant.position}</td>
+   <td>{props.occupant.counselor}</td>
    <td>
      <Link className="btn btn-link" to={`/edit/${props.occupant._id}`}>Edit</Link> |
      <button className="btn btn-link"

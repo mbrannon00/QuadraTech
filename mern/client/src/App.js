@@ -62,7 +62,7 @@ function App() {
           <Route path="/Register" element={<Register/>} />
           <Route path="/Add" element={<Create />} />
           <Route path="/Occupants" element={<OccupantList />} />
-          <Route path="/edit" element={<Edit />} />
+          <Route path="/Edit" element={<Edit />} />
         </Routes>
 
       </Router>  
