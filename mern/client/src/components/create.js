@@ -3,10 +3,11 @@ import { useNavigate } from "react-router";
  
 export default function Create() {
  const [form, setForm] = useState({
+   today: new Date(),
    name: "",
-   date: new Date(),
-   position: "",
-   level: "",
+   birthday: new Date(),
+   allergies: "",
+   couselor: "",
  });
  const navigate = useNavigate();
  
@@ -37,7 +38,7 @@ export default function Create() {
     });
   
     window.alert('successfully added')
-    setForm({ name: "", date: Date(), position: "", level: "" });
+    setForm({ date: Date(), name: "", birthday: Date(), allegies: "", counselor: "" });
     navigate("/");
   }
  
@@ -73,9 +74,9 @@ export default function Create() {
          <input
            type="date"
            className="form-control"
-           id="date"
-           value={form.date}
-           onChange={(e) => updateForm({ date: e.target.value })}
+           id="birthday"
+           value={form.birthday}
+           onChange={(e) => updateForm({ birthday: e.target.value })}
          />
        </div>
        <div className="form-group">
@@ -84,8 +85,8 @@ export default function Create() {
            type="text"
            className="form-control"
            id="allergies"
-           value={form.position}
-           onChange={(e) => updateForm({ position: e.target.value })}
+           value={form.allergies}
+           onChange={(e) => updateForm({ allergies: e.target.value })}
          />
        </div>
        <div className="form-group">
@@ -97,11 +98,11 @@ export default function Create() {
            <input
              className="form-check-input"
              type="radio"
-             name="positionOptions"
-             id="posYes"
+             name="counselorOptions"
+             id="counYes"
              value="Yes"
-             checked={form.level === "Yes"}
-             onChange={(e) => updateForm({ level: e.target.value })}
+             checked={form.counselor === "Yes"}
+             onChange={(e) => updateForm({ counselor: e.target.value })}
            />
            <label htmlFor="posYes" className="form-check-label">Yes</label>
          </div>
@@ -109,11 +110,11 @@ export default function Create() {
            <input
              className="form-check-input"
              type="radio"
-             name="positionOptions"
-             id="posNo"
+             name="couselorOptions"
+             id="counNo"
              value="No"
-             checked={form.level === "No"}
-             onChange={(e) => updateForm({ level: e.target.value })}
+             checked={form.counselor === "No"}
+             onChange={(e) => updateForm({ counselor: e.target.value })}
            />
            <label htmlFor="posNo" className="form-check-label">No</label>
          </div>

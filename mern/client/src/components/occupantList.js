@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
  
 const Occupant = (props) => (
  <tr>
-   <td>{props.occupant.name}</td>
    <td>{props.occupant.date}</td>
+   <td>{props.occupant.name}</td>
+   <td>{props.occupant.birthday}</td>
+   <td>{props.occupant.allergies}</td>
    <td>{props.occupant.position}</td>
-   <td>{props.occupant.level}</td>
    <td>
      <Link className="btn btn-link" to={`/edit/${props.occupant._id}`}>Edit</Link> |
      <button className="btn btn-link"
@@ -73,10 +74,11 @@ export default function OccupantList() {
      <table className="table table-striped" style={{ marginTop: 20 }}>
        <thead>
          <tr>
+           <th>Check-In Date</th>
            <th>Name</th>
-           <th>Position</th>
            <th>Birthday</th>
-           <th>Level</th>
+           <th>Allergies</th>
+           <th>Counselor?</th>
            <th>Action</th>
          </tr>
        </thead>
