@@ -7,7 +7,7 @@ export default function Create() {
    name: "",
    birthday: new Date(),
    allergies: "",
-   couselor: "",
+   counselor: "",
  });
  const navigate = useNavigate();
  
@@ -110,7 +110,7 @@ export default function Create() {
            <input
              className="form-check-input"
              type="radio"
-             name="couselorOptions"
+             name="counselorOptions"
              id="counNo"
              value="No"
              checked={form.counselor === "No"}

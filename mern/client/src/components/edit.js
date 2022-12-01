@@ -137,7 +137,7 @@ export default function Edit() {
              checked={form.counselor === "No"}
              onChange={(e) => updateForm({ counselor: e.target.value })}
            />
-           <label htmlFor="counrselorNo" className="form-check-label">No</label>
+           <label htmlFor="counselorNo" className="form-check-label">No</label>
          </div>
        </div>
        <br />
