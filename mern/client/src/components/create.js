@@ -7,8 +7,8 @@ export default function Create() {
    name: "",
    birthday: new Date(),
    allergies: "",
-   mentalHealth: 0,
-   physicalHealth: 0,
+   mentalHealth: "",
+   physicalHealth: "",
    counselor: "",
  });
  const navigate = useNavigate();
@@ -40,7 +40,7 @@ export default function Create() {
     });
   
     window.alert('successfully added')
-    setForm({ date: Date(), name: "", birthday: Date(), allegies: "", mentalHealth: 0, physicalHealth: 0, counselor: "" });
+    setForm({ date: Date(), name: "", birthday: Date(), allegies: "", mentalHealth: "", physicalHealth: "", counselor: "" });
     navigate("/");
   }
  
