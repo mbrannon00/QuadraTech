@@ -7,6 +7,8 @@ const Occupant = (props) => (
    <td>{props.occupant.name}</td>
    <td>{props.occupant.birthday}</td>
    <td>{props.occupant.allergies}</td>
+   <td>{props.occupant.mentalHealth}</td>
+   <td>{props.occupant.physicalHealth}</td>
    <td>{props.occupant.counselor}</td>
    <td>
      <Link className="btn btn-link" to={`/edit/${props.occupant._id}`}>Edit</Link> |
@@ -78,6 +80,8 @@ export default function OccupantList() {
            <th>Name</th>
            <th>Birthday</th>
            <th>Allergies</th>
+           <th>Mental Health</th>
+           <th>Physical Health</th>
            <th>Counselor?</th>
            <th>Action</th>
          </tr>

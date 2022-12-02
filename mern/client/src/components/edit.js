@@ -8,6 +8,8 @@ export default function Edit() {
    birthday: Date(),
    allergies: "",
    counselor: "",
+   mentalHealth: 0,
+   physicalHealth: 0,
    records: [],
  });
  const params = useParams();
@@ -53,6 +55,8 @@ export default function Edit() {
       name: form.name,
       birthday: form.birthday,
       allergies: form.allergies,
+      mentalHealth: form.mentalHealth,
+      physicalHealth: form.physicalHealth,
       counselor: form.counselor,
     };
   

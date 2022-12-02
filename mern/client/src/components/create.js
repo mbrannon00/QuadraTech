@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
- 
+
 export default function Create() {
  const [form, setForm] = useState({
    date: new Date(),
    name: "",
    birthday: new Date(),
    allergies: "",
+   mentalHealth: 0,
+   physicalHealth: 0,
    counselor: "",
  });
  const navigate = useNavigate();
@@ -38,7 +40,7 @@ export default function Create() {
     });
   
     window.alert('successfully added')
-    setForm({ date: Date(), name: "", birthday: Date(), allegies: "", counselor: "" });
+    setForm({ date: Date(), name: "", birthday: Date(), allegies: "", mentalHealth: 0, physicalHealth: 0, counselor: "" });
     navigate("/");
   }
  
@@ -47,7 +49,7 @@ export default function Create() {
    <div>
      <h3>Add New Occupant</h3>
      <form onSubmit={onSubmit}>
-     <div className="form-group">
+     <div className="form-group mt-5">
          <label htmlFor="date">Today's Date</label>
          <input
            type="date"
@@ -58,7 +60,7 @@ export default function Create() {
          />
        </div>
 
-       <div className="form-group">
+       <div className="form-group mt-5">
          <label htmlFor="name">Name</label>
          <input
            type="text"
@@ -69,7 +71,7 @@ export default function Create() {
          />
        </div>
        
-       <div className="form-group">
+       <div className="form-group mt-5">
          <label htmlFor="date">Birthday</label>
          <input
            type="date"
@@ -79,7 +81,7 @@ export default function Create() {
            onChange={(e) => updateForm({ birthday: e.target.value })}
          />
        </div>
-       <div className="form-group">
+       <div className="form-group mt-5">
          <label htmlFor="allergies">Allergies</label>
          <input
            type="text"
@@ -89,7 +91,32 @@ export default function Create() {
            onChange={(e) => updateForm({ allergies: e.target.value })}
          />
        </div>
-       <div className="form-group">
+       <div className="form-group flex mt-5">
+         <label htmlFor="mentalHealth">Mental Health</label>
+         <input
+           type="range"
+           min="1"
+           minLabel="5"
+           max="10"
+           className="form-control"
+           id="mentalHealth"
+           value={form.mentalHealth}
+           onChange={(e) => updateForm({mentalHealth: e.target.value })}
+         />
+       </div>
+       <div className="form-group mt-5">
+           <label htmlFor="physicalHealth">Physical Health</label>
+           <input
+               type="range"
+               min="1"
+               max="10"
+               className="form-control"
+               id="physicalHealth"
+               value={form.physicalHealth}
+               onChange={(e) => updateForm({physicalHealth: e.target.value })}
+           />
+       </div>
+       <div className="form-group mt-5">
          <label htmlFor="counselor">Do they want to talk to a counselor?</label>
        </div>
 
@@ -119,7 +146,7 @@ export default function Create() {
            <label htmlFor="posNo" className="form-check-label">No</label>
          </div>
        </div>
-       <div className="form-group">
+       <div className="form-group mt-5">
          <input
            type="submit"
            value="Submit"
