@@ -92,7 +92,7 @@ export default function Create() {
          />
        </div>
        <div className="form-group flex mt-5">
-         <label htmlFor="mentalHealth">Mental Health</label>
+         <label htmlFor="mentalHealth">Mental Health: 1 = Worst, 10 = Best</label>
          <input
            type="range"
            min="1"
@@ -103,9 +103,12 @@ export default function Create() {
            value={form.mentalHealth}
            onChange={(e) => updateForm({mentalHealth: e.target.value })}
          />
+         <div>
+             {form.mentalHealth}
+         </div>
        </div>
        <div className="form-group mt-5">
-           <label htmlFor="physicalHealth">Physical Health</label>
+           <label htmlFor="physicalHealth">Physical Health: 1 = Worst, 10 = Best</label>
            <input
                type="range"
                min="1"
@@ -115,6 +118,9 @@ export default function Create() {
                value={form.physicalHealth}
                onChange={(e) => updateForm({physicalHealth: e.target.value })}
            />
+           <div>
+               {form.physicalHealth}
+           </div>
        </div>
        <div className="form-group mt-5">
          <label htmlFor="counselor">Do they want to talk to a counselor?</label>
