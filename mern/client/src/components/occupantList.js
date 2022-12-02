@@ -13,7 +13,7 @@ const Occupant = (props) => (
      <Link className="btn btn-link" to={`/edit/${props.occupant._id}`}>Edit</Link> |
      <button className="btn btn-link"
        onClick={() => {
-         props.deleteRecord(props.occupants._id);
+         props.deleteOccupant(props.occupants._id);
        }}
      >
        Delete
