@@ -3,9 +3,11 @@ import { useParams, useNavigate } from "react-router";
  
 export default function Edit() {
  const [form, setForm] = useState({
+   date: Date(),
    name: "",
-   position: "",
-   level: "",
+   birthday: Date(),
+   allergies: "",
+   counselor: "",
    records: [],
  });
  const params = useParams();
@@ -21,15 +23,15 @@ export default function Edit() {
         window.alert(message);
         return;
       }
-  
-      const record = await response.json();
-      if (!record) {
-        window.alert(`Occupant with id ${id} not found`);
+
+      const occupant = await response.json();
+      if (!occupant) {
+        window.alert(`Record with id ${id} not found`);
         navigate("/");
         return;
       }
   
-      setForm(record);
+      setForm(occupant);
     }
   
     fetchData();
@@ -47,9 +49,11 @@ export default function Edit() {
  async function onSubmit(e) {
     e.preventDefault();
     const editedPerson = {
+      date: form.date,
       name: form.name,
-      position: form.position,
-      level: form.level,
+      birthday: form.birthday,
+      allergies: form.allergies,
+      counselor: form.counselor,
     };
   
     // This will send a post request to update the data in the database.
@@ -69,6 +73,16 @@ export default function Edit() {
    <div>
      <h3>Update Occupant</h3>
      <form onSubmit={onSubmit}>
+     <div className="form-group">
+         <label htmlFor="date">Date: </label>
+         <input
+           type="date"
+           className="form-control"
+           id="date"
+           value={form.date}
+           onChange={(e) => updateForm({ date: e.target.value })}
+         />
+       </div>
        <div className="form-group">
          <label htmlFor="name">Name: </label>
          <input
@@ -80,52 +94,51 @@ export default function Edit() {
          />
        </div>
        <div className="form-group">
-         <label htmlFor="position">Position: </label>
+         <label htmlFor="birthday">Birthday: </label>
+         <input
+           type="date"
+           className="form-control"
+           id="birthday"
+           value={form.birthday}
+           onChange={(e) => updateForm({ birthday: e.target.value })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="allergies">Allergies: </label>
          <input
            type="text"
            className="form-control"
-           id="position"
-           value={form.position}
-           onChange={(e) => updateForm({ position: e.target.value })}
+           id="allergies"
+           value={form.allergies}
+           onChange={(e) => updateForm({ allergies: e.target.value })}
          />
        </div>
+      
        <div className="form-group">
          <div className="form-check form-check-inline">
            <input
              className="form-check-input"
              type="radio"
-             name="positionOptions"
-             id="positionIntern"
-             value="Intern"
-             checked={form.level === "Intern"}
-             onChange={(e) => updateForm({ level: e.target.value })}
+             name="counselorOptions"
+             id="counselorYes"
+             value="Yes"
+             checked={form.counselor === "Yes"}
+             onChange={(e) => updateForm({ counselor: e.target.value })}
            />
-           <label htmlFor="positionIntern" className="form-check-label">Intern</label>
+           <label htmlFor="counselorYes" className="form-check-label">Yes</label>
          </div>
          <div className="form-check form-check-inline">
            <input
              className="form-check-input"
              type="radio"
-             name="positionOptions"
-             id="positionJunior"
-             value="Junior"
-             checked={form.level === "Junior"}
-             onChange={(e) => updateForm({ level: e.target.value })}
+             name="counselorOptions"
+             id="counselorNo"
+             value="No"
+             checked={form.counselor === "No"}
+             onChange={(e) => updateForm({ counselor: e.target.value })}
            />
-           <label htmlFor="positionJunior" className="form-check-label">Junior</label>
+           <label htmlFor="counselorNo" className="form-check-label">No</label>
          </div>
-         <div className="form-check form-check-inline">
-           <input
-             className="form-check-input"
-             type="radio"
-             name="positionOptions"
-             id="positionSenior"
-             value="Senior"
-             checked={form.level === "Senior"}
-             onChange={(e) => updateForm({ level: e.target.value })}
-           />
-           <label htmlFor="positionSenior" className="form-check-label">Senior</label>
-       </div>
        </div>
        <br />
  
