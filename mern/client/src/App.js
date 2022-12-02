@@ -9,11 +9,12 @@ import { createContext, useState, useEffect } from 'react'
 // We import all the components we need in our app
 import Home from "./components/webpages/home"
 import Login from "./components/webpages/login"
-import LoggedInScreen from "./components/webpages/loggedInScreen";
+import LoggedInScreen from "./components/webpages/loggedInScreen"
 import Register from "./components/webpages/register.js"
 import Create from "./components/create.js"
 import OccupantList from "./components/occupantList.js"
 import Edit from "./components/edit.js"
+import Counselor from "./components/webpages/counselor.js"
 
 export const UserContext = createContext()
 
@@ -65,6 +66,7 @@ function App() {
           <Route path="/Add" element={<Create />} />
           <Route path="/Occupants" element={<OccupantList />} />
           <Route path="/Edit" element={<Edit />} />
+          <Route path="/Counselor" element={<Counselor />} />
         </Routes>
 
       </Router>  

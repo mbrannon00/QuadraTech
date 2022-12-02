@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import Navbar from '../components/navbar.js';
  
 export default function Create() {
  const [form, setForm] = useState({
@@ -39,12 +40,13 @@ export default function Create() {
   
     window.alert('successfully added')
     setForm({ date: Date(), name: "", birthday: Date(), allegies: "", counselor: "" });
-    navigate("/");
+    navigate("/LoggedInScreen");
   }
  
  // This following section will display the form that takes the input from the user.
  return (
    <div>
+     <Navbar />
      <h3>Add New Occupant</h3>
      <form onSubmit={onSubmit}>
      <div className="form-group">
