@@ -9,6 +9,7 @@ import { createContext, useState, useEffect } from 'react'
 // We import all the components we need in our app
 import Home from "./components/webpages/home"
 import Login from "./components/webpages/login"
+import LoggedInScreen from "./components/webpages/loggedInScreen";
 import Register from "./components/webpages/register.js"
 import Create from "./components/create.js"
 import OccupantList from "./components/occupantList.js"
@@ -59,6 +60,7 @@ function App() {
         <Routes> {/* Routes contained  for router  */}
           <Route path="/" element={<Home />} />
           <Route path="/Login" element={<Login/>} />
+          <Route path="/LoggedInScreen" element={<LoggedInScreen/>} />
           <Route path="/Register" element={<Register/>} />
           <Route path="/Add" element={<Create />} />
           <Route path="/Occupants" element={<OccupantList />} />

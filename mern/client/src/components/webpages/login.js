@@ -2,15 +2,23 @@ import '../webpages/login.css';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from '../navbar.js';
-import "bootstrap/dist/css/bootstrap.min.css"
-import axios from 'axios'
+import { Navigate } from "react-router-dom";
 
 export default function Login() {
   const [user, setUser] = useState({});
 
+  const[loggedIn, setLoggedIn] = useState(false);
+
+  function login() {
+    console.log("logged in");
+    setLoggedIn(true);
+    return <Navigate to="/LoggedInScreen" />;
+  }
+
   function handleCallbackResponse(response){
     console.log("Encoded JWT ID token: " + response.credential);
     document.getElementById("signInDiv").hidden = true;
+    login();
   }
 
   useEffect(() => {
@@ -29,6 +37,11 @@ export default function Login() {
   return( 
     <div>
       <div id="signInDiv">
+        {
+          loggedIn && (
+            <Navigate to="/LoggedInScreen" />
+            )
+        }
         {user && 
           <div>
           <Link to="/Add" > <button className="main-btn new-occ">Add New Occupant</button></Link>
