@@ -75,9 +75,9 @@ recordRoutes.route("/occupants/update/:id").post(function (req, response) {
 });
  
 // This section will help you delete a record
-recordRoutes.route("occupants/:id").delete((req, response) => {
+recordRoutes.route("/delete").post((req, response) => {
  let db_connect = dbo.getDb();
- let myquery = { _id: ObjectId(req.params.id) };
+ let myquery = { _id: ObjectId(req.body.id) };
  db_connect.collection("occupants").deleteOne(myquery, function (err, obj) {
    if (err) throw err;
    console.log("1 occupant deleted");
