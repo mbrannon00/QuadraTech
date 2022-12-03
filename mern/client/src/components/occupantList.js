@@ -12,7 +12,11 @@ const Occupant = (props) => (
      <Link className="btn btn-link" to={`/edit/${props.occupant._id}`}>Edit</Link> |
      <button className="btn btn-link"
        onClick={() => {
+<<<<<<< HEAD
          props.deleteOccupant(props.occupant._id);
+=======
+         props.deleteOccupant(props.occupants._id);
+>>>>>>> dc4cac719f607ce941aeacb4389683d850e97f23
        }}
      >
        Delete
