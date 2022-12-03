@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from '../components/navbar.js';
  
 const Occupant = (props) => (
  <tr>
@@ -13,7 +12,7 @@ const Occupant = (props) => (
      <Link className="btn btn-link" to={`/edit/${props.occupant._id}`}>Edit</Link> |
      <button className="btn btn-link"
        onClick={() => {
-         props.deleteOccupant(props.occupants._id);
+         props.deleteOccupant(props.occupant._id);
        }}
      >
        Delete
@@ -23,11 +22,11 @@ const Occupant = (props) => (
 );
  
 export default function OccupantList() {
- const [occupant, setOccupant] = useState([]);
+ const [occupants, setOccupants] = useState([]);
  
  // This method fetches the records from the database.
  useEffect(() => {
-   async function getOccupant() {
+   async function getOccupants() {
      const response = await fetch(`http://localhost:5000/occupants/`);
  
      if (!response.ok) {
@@ -36,28 +35,32 @@ export default function OccupantList() {
        return;
      }
  
-     const occupant = await response.json();
-     setOccupant(occupant);
+     const occupants = await response.json();
+     setOccupants(occupants);
    }
  
-   getOccupant();
+   getOccupants();
  
    return;
- }, [occupant.length]);
+ }, [occupants.length]);
  
  // This method will delete a record
  async function deleteOccupant(id) {
-   await fetch(`http://localhost:5000/${id}`, {
-     method: "DELETE"
-   });
+   await fetch(`http://localhost:5000/delete`, {
+     method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: "{\"id\":" + "\"" + id + "\"}",
+   })
  
-   const newOccupant = occupant.filter((el) => el._id !== id);
-   setOccupant(newOccupant);
+   const newOccupants = occupants.filter((el) => el._id !== id);
+   setOccupants(newOccupants);
  }
  
  // This method will map out the records on the table
  function occupantList() {
-   return occupant.map((occupant) => {
+   return occupants.map((occupant) => {
      return (
        <Occupant
          occupant={occupant}
@@ -71,7 +74,6 @@ export default function OccupantList() {
  // This following section will display the table with the records of individuals.
  return (
    <div>
-       <Navbar />
      <h3>Record List</h3>
      <table className="table table-striped" style={{ marginTop: 20 }}>
        <thead>
