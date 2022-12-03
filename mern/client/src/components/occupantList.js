@@ -13,10 +13,14 @@ const Occupant = (props) => (
      <button className="btn btn-link"
        onClick={() => {
 <<<<<<< HEAD
+<<<<<<< HEAD
          props.deleteOccupant(props.occupant._id);
 =======
          props.deleteOccupant(props.occupants._id);
 >>>>>>> dc4cac719f607ce941aeacb4389683d850e97f23
+=======
+         props.deleteOccupant(props.occupant._id);
+>>>>>>> 95505f5835a184818231f73bbcc21c4c0773a99d
        }}
      >
        Delete
