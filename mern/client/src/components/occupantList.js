@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from '../components/navbar.js';
+import './occupantList.css';
  
 const Occupant = (props) => (
  <tr>
@@ -76,7 +78,10 @@ export default function OccupantList() {
  // This following section will display the table with the records of individuals.
  return (
    <div>
-     <h3>Record List</h3>
+	<Navbar/>
+	<div id="header">
+     <h3>Occupant List</h3>
+	 <div id="list">
      <table className="table table-striped" style={{ marginTop: 20 }}>
        <thead>
          <tr>
@@ -92,6 +97,8 @@ export default function OccupantList() {
        </thead>
        <tbody>{occupantList()}</tbody>
      </table>
+	 </div>
+	 </div>
    </div>
  );
 }
