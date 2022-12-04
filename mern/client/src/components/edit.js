@@ -8,6 +8,8 @@ export default function Edit() {
    birthday: Date(),
    allergies: "",
    counselor: "",
+   mentalHealth: "",
+   physicalHealth: "",
    records: [],
  });
  const params = useParams();
@@ -53,6 +55,8 @@ export default function Edit() {
       name: form.name,
       birthday: form.birthday,
       allergies: form.allergies,
+      mentalHealth: form.mentalHealth,
+      physicalHealth: form.physicalHealth,
       counselor: form.counselor,
     };
   
@@ -113,6 +117,26 @@ export default function Edit() {
            onChange={(e) => updateForm({ allergies: e.target.value })}
          />
        </div>
+         <div className="form-group">
+             <label htmlFor="mentalHealth">Mental Health (1=worst, 10=best)</label>
+             <input
+                 type="text"
+                 className="form-control"
+                 id="mental"
+                 value={form.mentalHealth}
+                 onChange={(e) => updateForm({mentalHealth: e.target.value})}
+             />
+         </div>
+         <div className="form-group">
+             <label htmlFor="physicalHealth">Physical Health (1=worst, 10=best)</label>
+             <input
+                 type="text"
+                 className="form-control"
+                 id="physical"
+                 value={form.physicalHealth}
+                 onChange={(e) => updateForm({physicalHealth: e.target.value})}
+             />
+         </div>
       
        <div className="form-group">
          <div className="form-check form-check-inline">
