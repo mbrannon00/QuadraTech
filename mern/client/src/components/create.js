@@ -9,6 +9,8 @@ export default function Create() {
         name: "",
         birthday: new Date(),
         allergies: "",
+        mentalHealth: "",
+        physicalHealth: "",
         counselor: "",
     });
     const navigate = useNavigate();
@@ -40,7 +42,7 @@ export default function Create() {
             });
 
         window.alert('successfully added')
-        setForm({date: Date(), name: "", birthday: Date(), allegies: "", counselor: ""});
+        setForm({date: Date(), name: "", birthday: Date(), allegies: "", mentalHealth: "", physicalHealth: "", counselor: ""});
         navigate("/LoggedInScreen");
     }
 
@@ -91,6 +93,26 @@ export default function Create() {
                             id="allergies"
                             value={form.allergies}
                             onChange={(e) => updateForm({allergies: e.target.value})}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="mentalHealth">Mental Health (1=worst, 10=best)</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="mental"
+                            value={form.mentalHealth}
+                            onChange={(e) => updateForm({mentalHealth: e.target.value})}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="physicalHealth">Physical Health (1=worst, 10=best)</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="physical"
+                            value={form.physicalHealth}
+                            onChange={(e) => updateForm({physicalHealth: e.target.value})}
                         />
                     </div>
                     <div className="form-group">

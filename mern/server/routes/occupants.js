@@ -44,6 +44,8 @@ recordRoutes.route("/occupants/add").post(function (req, response) {
    name: req.body.name,
    birthday: req.body.birthday,
    allergies: req.body.allergies,
+   mentalHealth: req.body.mentalHealth,
+   physicalHealth: req.body.physicalHealth,
    counselor: req.body.counselor,
  };
  db_connect.collection("occupants").insertOne(myobj, function (err, res) {
@@ -62,6 +64,8 @@ recordRoutes.route("/update/:id").post(function (req, response) {
     name: req.body.name,
     birthday: req.body.birthday,
     allergies: req.body.allergies,
+    mentalHealth: req.body.mentalHealth,
+    physicalHealth: req.body.physicalHealth,
     counselor: req.body.counselor,
    },
  };
