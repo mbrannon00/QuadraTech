@@ -65,7 +65,7 @@ function App() {
           <Route path="/Register" element={<Register/>} />
           <Route path="/Add" element={<Create />} />
           <Route path="/Occupants" element={<OccupantList />} />
-          <Route path="/Edit" element={<Edit />} />
+          <Route path="/edit/:id" element={<Edit />} />
           <Route path="/Counselor" element={<Counselor />} />
         </Routes>
 
