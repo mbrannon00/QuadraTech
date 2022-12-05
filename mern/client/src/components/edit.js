@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
+import Navbar from './navbar.js';
+import './create.css';
  
 export default function Edit() {
  const [form, setForm] = useState({
@@ -75,6 +77,8 @@ export default function Edit() {
  // This following section will display the form that takes input from the user to update the data.
  return (
    <div>
+       <Navbar />
+       <div className="form">
      <h3>Update Occupant</h3>
      <form onSubmit={onSubmit}>
      <div className="form-group">
@@ -174,6 +178,7 @@ export default function Edit() {
          />
        </div>
      </form>
+     </div>
    </div>
  );
 }
